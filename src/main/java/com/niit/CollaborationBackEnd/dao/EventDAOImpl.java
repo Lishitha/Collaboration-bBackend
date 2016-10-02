@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.niit.CollaborationBackEnd.model.Event;
 
 @Repository("eventDAO")
@@ -46,19 +46,32 @@ public class EventDAOImpl implements EventDAO {
 	}
 	
 	@Transactional
-	public boolean saveOrUpdate(Event event)
-	{
-		try
-		{
-			sessionFactory.getCurrentSession().saveOrUpdate(event);
+	public boolean save(Event event) {
+	
+		
+		try {
+			sessionFactory.getCurrentSession().save(event);
+		} catch (HibernateException e) {
 			
-		}
-		catch(Exception e)
-		{
 			e.printStackTrace();
 			return false;
 		}
-		
+	
+		return true;
+	}
+
+
+	@Transactional
+	public boolean update(Event event) {
+
+		try {
+			sessionFactory.getCurrentSession().update(event);
+		} catch (HibernateException e) {
+			
+			e.printStackTrace();
+			return false;
+		}
+	
 		return true;
 	}
 	

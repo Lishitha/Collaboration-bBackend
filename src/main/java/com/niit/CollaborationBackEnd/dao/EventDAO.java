@@ -7,7 +7,8 @@ public interface EventDAO {
 	
 	public List<Event> list();
 	public Event get(String id);
-	public boolean saveOrUpdate(Event event);
+	public boolean save(Event event);
+	public boolean update(Event event);
 	public boolean delete(String id);
 
 }

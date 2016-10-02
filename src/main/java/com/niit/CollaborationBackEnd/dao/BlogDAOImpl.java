@@ -79,7 +79,7 @@ public class BlogDAOImpl implements BlogDAO {
 	@Transactional
 	public Blog get(String id)
 	{
-		String hql = "from Blogs where id=" + "'" + id + "'" ;
+		String hql = "from Blog where id=" + "'" + id + "'" ;
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Blog> list = query.list();
@@ -90,6 +90,8 @@ public class BlogDAOImpl implements BlogDAO {
 		}
 		return null;
 	}
+	
+	
 	
 	@Transactional
 	public boolean delete(String id)

@@ -80,9 +80,8 @@ public class BlogController {
 		if (blogDAO.get(id) == null) {
 			return new ResponseEntity<Blog>(HttpStatus.NOT_FOUND);
 		}
-		//blog.setId(id);
+		blog.setId(id);
 
-		
 		blogDAO.update(blog);
 
 		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
@@ -103,70 +102,6 @@ public class BlogController {
 	}
 
 
-  /*  @GetMapping("/Blog/")
-	public ResponseEntity<List<Blog>> listAllBlog() {
-		List<Blog> listBlog = blogDAO.list();
-		if (listBlog.isEmpty()) {
-
-			return new ResponseEntity<List<Blog>>(HttpStatus.NO_CONTENT);
-		}
-
-		return new ResponseEntity<List<Blog>>(listBlog, HttpStatus.OK);
-	}
-
-    @GetMapping("/blog")
-    public ResponseEntity<List<Blog>> getBlogs() {
-
-            List<Blog> list = blogDAO.list();
-            if (list.isEmpty()) {
-                    return new ResponseEntity<List<Blog>>(HttpStatus.NO_CONTENT);
-            }
-
-            return new ResponseEntity<List<Blog>>(HttpStatus.OK);
-    }
-
-    @GetMapping("/blogs/{id}")
-    public ResponseEntity<Blog> getBlog(@PathVariable("id") String id) {
-
-            blog = blogDAO.get(id);
-            if (blog == null) {
-                    return new ResponseEntity<Blog>(HttpStatus.NOT_FOUND);
-            }
-
-            return new ResponseEntity<Blog>(blog, HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/blog")
-    public ResponseEntity<Blog> createBlog(@RequestBody Blog blog) {
-
-            blogDAO.saveOrUpdate(blog);
-
-            return new ResponseEntity<Blog>(blog, HttpStatus.OK);
-    }
-
-    @DeleteMapping("/blog/{id}")
-    public ResponseEntity<Blog> deleteBlog(@PathVariable String id) {
-
-            if (blogDAO.get(id) == null) {
-                    return new ResponseEntity<Blog>(HttpStatus.NOT_FOUND);
-            }
-
-            blogDAO.delete(id);
-
-            return new ResponseEntity<Blog>(blog, HttpStatus.OK);
-    }
-
-    @PutMapping("/blog/{id}")
-    public ResponseEntity<Blog> updateBlog(@PathVariable String id,
-@RequestBody Blog blog) {
-
-            if (blogDAO.get(id) == null) {
-                    return new ResponseEntity<Blog>(HttpStatus.NOT_FOUND);
-            }
-
-            blogDAO.saveOrUpdate(blog);
-
-            return new ResponseEntity<Blog>(blog, HttpStatus.OK);
-    }*/
+  
 	
 }

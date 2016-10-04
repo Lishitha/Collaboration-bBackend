@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.niit.CollaborationBackEnd.model.UserDetail;
 
 @Repository("userDetailDAO")
@@ -48,19 +48,32 @@ public class UserDetailDAOImpl implements UserDetailDAO {
 	}
 	
 	@Transactional
-	public boolean saveOrUpdate(UserDetail userDetail)
-	{
-		try
-		{
-			sessionFactory.getCurrentSession().saveOrUpdate(userDetail);
+	public boolean save(UserDetail userDetail) {
+	
+		
+		try {
+			sessionFactory.getCurrentSession().save(userDetail);
+		} catch (HibernateException e) {
 			
-		}
-		catch(Exception e)
-		{
 			e.printStackTrace();
 			return false;
 		}
-		
+	
+		return true;
+	}
+
+
+	@Transactional
+	public boolean update(UserDetail userDetail) {
+
+		try {
+			sessionFactory.getCurrentSession().update(userDetail);
+		} catch (HibernateException e) {
+			
+			e.printStackTrace();
+			return false;
+		}
+	
 		return true;
 	}
 	

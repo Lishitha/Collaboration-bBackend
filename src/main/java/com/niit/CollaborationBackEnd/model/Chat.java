@@ -7,7 +7,7 @@ public class Chat {
 	private String id;
 	private String userID;
 	private String friendID;
-	private Date dateTime;
+	//private Date dateTime;
 	private String message;
 	
 	public String getId() {
@@ -28,12 +28,12 @@ public class Chat {
 	public void setFriendID(String friendID) {
 		this.friendID = friendID;
 	}
-	public Date getDateTime() {
-		return dateTime;
-	}
-	public void setDateTime(Date dateTime) {
-		this.dateTime = dateTime;
-	}
+//	public Date getDateTime() {
+//		return dateTime;
+//	}
+//	public void setDateTime(Date dateTime) {
+//		this.dateTime = dateTime;
+//	}
 	public String getMessage() {
 		return message;
 	}

@@ -1,7 +1,12 @@
 package com.niit.CollaborationBackEnd.model;
 
-import java.util.Date;
+import javax.persistence.Entity;
 
+import org.springframework.stereotype.Component;
+
+//import java.util.Date;
+@Entity
+@Component
 public class Chat {
 
 	private String id;

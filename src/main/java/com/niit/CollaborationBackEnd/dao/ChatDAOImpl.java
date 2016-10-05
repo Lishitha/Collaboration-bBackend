@@ -1,113 +1,109 @@
 package com.niit.CollaborationBackEnd.dao;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import com.niit.CollaborationBackEnd.model.Chat;
 
-import com.niit.CollaborationBackEnd.model.Friend;
+@Repository("chatDAO")
+public class ChatDAOImpl {
 
-@Repository("friendDAO")
-public class FriendDAOImpl implements FriendDAO{
-	
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	@Autowired
-	private Friend friend;
 
-	public FriendDAOImpl(SessionFactory sessionFactory)
+	@Autowired
+	private Chat chat;
+
+	public ChatDAOImpl(SessionFactory sessionFactory)
 	{
-		try 
+		try
 		{
-			this.sessionFactory=sessionFactory;
+			this.sessionFactory = sessionFactory;
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Transactional
-	public List<Friend> list()
+	public List<Chat> list() 
 	{
-		String hql = "from Friend" ;
-		
+		String hql = "from Chat";
+
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		
+
 		@SuppressWarnings("unchecked")
-		List<Friend> list = query.list();
-		
+		List<Chat> list = query.list();
+
 		return list;
 	}
-	
+
 	@Transactional
-	public boolean save(Friend friend)
-	{
+	public boolean save(Chat chat) {
+
 		try
 		{
-			sessionFactory.getCurrentSession().save(friend);
-			
-		}
-		catch(HibernateException e)
+			sessionFactory.getCurrentSession().save(chat);
+		} 
+		catch (HibernateException e) 
 		{
 			e.printStackTrace();
 			return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	@Transactional
-	public boolean update(Friend friend)
-	{
+	public boolean update(Chat chat) {
+
 		try
 		{
-			sessionFactory.getCurrentSession().update(friend);
-			
-		}
-		catch(HibernateException e)
+			sessionFactory.getCurrentSession().update(chat);
+		} 
+		catch (HibernateException e)
 		{
 			e.printStackTrace();
 			return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	@Transactional
-	public Friend get(String id)
+	public Chat get(String id)
 	{
-		String hql = "from Friends where id=" + "'" + id + "'" ;
+		String hql = "from Chat where id=" + "'" + id + "'";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
-		List<Friend> list = query.list();
-		
-		if(list !=null && !list.isEmpty())
+		List<Chat> list = query.list();
+
+		if (list != null && !list.isEmpty())
 		{
 			return list.get(0);
 		}
 		return null;
 	}
-	
+
 	@Transactional
 	public boolean delete(String id)
 	{
-		try
+		try 
 		{
-			sessionFactory.getCurrentSession().delete(friend);
-		}
-		catch(Exception e)
+			sessionFactory.getCurrentSession().delete(chat);
+		} 
+		catch (Exception e)
 		{
 			e.printStackTrace();
 			return false;
 		}
-		
+
 		return true;
 	}
+
 }

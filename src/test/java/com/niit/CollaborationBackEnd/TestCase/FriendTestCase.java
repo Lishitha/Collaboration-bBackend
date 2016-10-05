@@ -22,7 +22,7 @@ public class FriendTestCase {
 		friend.setFriendId("FR01");
 		friend.setStatus('N');
 		
-		friendDAO.saveOrUpdate(friend);
+		friendDAO.save(friend);
 
 	}
 

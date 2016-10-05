@@ -49,10 +49,12 @@ public class BlogDAOImpl implements BlogDAO {
 	public boolean save(Blog blog) {
 	
 		
-		try {
+		try 
+		{
 			sessionFactory.getCurrentSession().save(blog);
-		} catch (HibernateException e) {
-			
+		} 
+		catch (HibernateException e)
+		{
 			e.printStackTrace();
 			return false;
 		}
@@ -64,10 +66,12 @@ public class BlogDAOImpl implements BlogDAO {
 	@Transactional
 	public boolean update(Blog blog) {
 
-		try {
+		try
+		{
 			sessionFactory.getCurrentSession().update(blog);
-		} catch (HibernateException e) {
-			
+		} 
+		catch (HibernateException e) 
+		{
 			e.printStackTrace();
 			return false;
 		}

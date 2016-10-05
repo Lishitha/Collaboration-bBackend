@@ -26,7 +26,7 @@ public class UserDetailTestCase {
 		userDetail.setAddress("CALICUT");
 		userDetail.setMobNumber("9946161784");
 		
-		userDetailDAO.saveOrUpdate(userDetail);
+		userDetailDAO.save(userDetail);
 
 		/*UserDetailDAO userDetailDAO = (UserDetailDAO) context.getBean("userDetailDAO");
 		UserDetail userDetail = (UserDetail) context.getBean("userDetail");

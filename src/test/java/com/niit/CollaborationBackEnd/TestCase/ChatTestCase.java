@@ -23,8 +23,7 @@ public class ChatTestCase {
 		//chat.setDateTime('2016-10-5');
 		chat.setMessage("haaaaiiiiiiiiiiiiii");
 		
-		
-
+		chatDAO.save(chat);
 	}
 
 }

@@ -8,10 +8,12 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.niit.CollaborationBackEnd.model.Job;
 
-public class JobDAOImpl {
+@Repository("jobDAO")
+public class JobDAOImpl implements JobDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;

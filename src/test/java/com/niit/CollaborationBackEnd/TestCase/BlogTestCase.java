@@ -18,8 +18,8 @@ public class BlogTestCase {
 		Blog blog = (Blog) context.getBean("blog");
 		
 		blog.setId("BL03");
-		blog.setDescription("This is blog 3");
 		blog.setUserId("US03");
+		blog.setDescription("This is blog 3");
 		blog.setStatus('N');
 		
 		blogDAO.save(blog);

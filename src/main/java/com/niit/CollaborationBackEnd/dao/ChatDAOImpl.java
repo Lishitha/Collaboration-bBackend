@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.niit.CollaborationBackEnd.model.Chat;
 
 @Repository("chatDAO")
-public class ChatDAOImpl {
+public class ChatDAOImpl implements ChatDAO{
 
 	@Autowired
 	private SessionFactory sessionFactory;

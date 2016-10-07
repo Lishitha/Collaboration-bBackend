@@ -16,10 +16,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.niit.CollaborationBackEnd.model.Blog;
+import com.niit.CollaborationBackEnd.model.Chat;
 import com.niit.CollaborationBackEnd.model.Event;
 import com.niit.CollaborationBackEnd.model.Friend;
 import com.niit.CollaborationBackEnd.model.UserDetail;
-
 
 @Configuration
 @ComponentScan("com.niit.CollaborationBackEnd")
@@ -63,6 +63,7 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(datasource);
 		/*sessionBuilder.addProperties(getHibernateProperties());*/
 		sessionBuilder.addAnnotatedClass(Blog.class);
+		sessionBuilder.addAnnotatedClass(Chat.class);
 		sessionBuilder.addAnnotatedClass(UserDetail.class);
 		sessionBuilder.addAnnotatedClass(Friend.class);
 		sessionBuilder.addAnnotatedClass(Event.class);

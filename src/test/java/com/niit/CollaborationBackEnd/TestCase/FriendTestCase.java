@@ -17,12 +17,14 @@ public class FriendTestCase {
 		FriendDAO friendDAO = (FriendDAO) context.getBean("friendDAO");
 		Friend friend = (Friend) context.getBean("friend");
 		
-		friend.setId("01");
-		friend.setUserId("US01");
-		friend.setFriendId("FR01");
+		friend.setId("02");
+		friend.setUserId("US02");
+		friend.setFriendId("FR02");
 		friend.setStatus('N');
 		
 		friendDAO.save(friend);
+		
+		System.out.println("*****Data is successfully inserted into the Friend thable*****");
 
 	}
 

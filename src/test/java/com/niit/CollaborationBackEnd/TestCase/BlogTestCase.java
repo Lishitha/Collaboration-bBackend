@@ -25,5 +25,6 @@ public class BlogTestCase {
 		blogDAO.save(blog);
 
 	}
-
 }
+
+

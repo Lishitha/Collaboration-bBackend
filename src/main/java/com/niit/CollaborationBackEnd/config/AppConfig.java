@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
-@EnableWebMvc
+/*@EnableWebMvc*/
 @ComponentScan(basePackages = "com.niit.CollaborationBackEnd" )
 public class AppConfig {
 

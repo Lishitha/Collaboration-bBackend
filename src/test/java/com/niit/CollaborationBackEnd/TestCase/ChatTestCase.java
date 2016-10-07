@@ -17,13 +17,15 @@ public class ChatTestCase {
 		ChatDAO chatDAO= (ChatDAO) context.getBean("chatDAO");
 		Chat chat = (Chat) context.getBean("chat");
 		
-		chat.setId("CH01");
-		chat.setFriendID("FR01");
-		chat.setUserID("US01");
+		chat.setId("CH02");
+		chat.setFriendID("FR02");
+		chat.setUserID("US02");
 		//chat.setDateTime('2016-10-5');
-		chat.setMessage("haaaaiiiiiiiiiiiiii");
+		chat.setMessage("Helllloooooooooo");
 		
 		chatDAO.save(chat);
+		
+		System.out.println("*****Data is successfully inserted into the chat thable*****");
 	}
 
 }

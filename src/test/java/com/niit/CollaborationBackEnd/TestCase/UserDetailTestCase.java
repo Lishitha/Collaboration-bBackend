@@ -19,25 +19,15 @@ public class UserDetailTestCase {
 		UserDetailDAO userDetailDAO = (UserDetailDAO) context.getBean("userDetailDAO");
 		UserDetail userDetail = (UserDetail) context.getBean("userDetail");
 		
-		userDetail.setId("US01");
-		userDetail.setName("KUTTU");
-		userDetail.seteMail("kuttu@gmail.com");
-		userDetail.setPassWord("KUTTU");
-		userDetail.setAddress("CALICUT");
-		userDetail.setMobNumber("9946161784");
+		userDetail.setId("US02");
+		userDetail.setName("AMMU");
+		userDetail.seteMail("ammu@gmail.com");
+		userDetail.setPassWord("AMMU");
+		userDetail.setAddress("THRISSUR");
+		userDetail.setMobNumber("9946161748");
 		
 		userDetailDAO.save(userDetail);
 
-		/*UserDetailDAO userDetailDAO = (UserDetailDAO) context.getBean("userDetailDAO");
-		UserDetail userDetail = (UserDetail) context.getBean("userDetail");
-
-		userDetail.setId("US01");
-		userDetail.setName("KUTTU");
-		userDetail.seteMail("kuttu@gmail.com");
-		userDetail.setPassWord("KUTTU");
-		userDetail.setAddress("CALICUT");
-		userDetail.setMobNumber("9946161784");
-
-		userDetailDAO.saveOrUpdate(userDetail);*/
+		System.out.println("*****Data is successfully inserted into the UserDetail table*****");
 	}
 }

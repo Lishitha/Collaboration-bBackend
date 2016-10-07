@@ -19,12 +19,12 @@ public class UserDetailTestCase {
 		UserDetailDAO userDetailDAO = (UserDetailDAO) context.getBean("userDetailDAO");
 		UserDetail userDetail = (UserDetail) context.getBean("userDetail");
 		
-		userDetail.setId("US02");
-		userDetail.setName("AMMU");
-		userDetail.seteMail("ammu@gmail.com");
-		userDetail.setPassWord("AMMU");
-		userDetail.setAddress("THRISSUR");
-		userDetail.setMobNumber("9946161748");
+		userDetail.setId("US05");
+		userDetail.setName("SIDHARTH");
+		userDetail.seteMail("sidhu@gmail.com");
+		userDetail.setPassWord("SIDHARTH");
+		userDetail.setAddress("MUMBAI");
+		userDetail.setMobNumber("1122334455");
 		
 		userDetailDAO.save(userDetail);
 

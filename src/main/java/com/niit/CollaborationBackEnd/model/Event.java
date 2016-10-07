@@ -13,9 +13,13 @@ public class Event {
 	
 	@Id
 	private String id;
+	
 	private String name;
+	
 	private String description;
+	
 	private String place;
+	
 	private Date postedDate;
 	
 	public String getId() {

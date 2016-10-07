@@ -19,6 +19,7 @@ import com.niit.CollaborationBackEnd.model.Blog;
 import com.niit.CollaborationBackEnd.model.Chat;
 import com.niit.CollaborationBackEnd.model.Event;
 import com.niit.CollaborationBackEnd.model.Friend;
+import com.niit.CollaborationBackEnd.model.Job;
 import com.niit.CollaborationBackEnd.model.UserDetail;
 
 @Configuration
@@ -64,6 +65,7 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
 		/*sessionBuilder.addProperties(getHibernateProperties());*/
 		sessionBuilder.addAnnotatedClass(Blog.class);
 		sessionBuilder.addAnnotatedClass(Chat.class);
+		sessionBuilder.addAnnotatedClass(Job.class);
 		sessionBuilder.addAnnotatedClass(UserDetail.class);
 		sessionBuilder.addAnnotatedClass(Friend.class);
 		sessionBuilder.addAnnotatedClass(Event.class);

@@ -1,5 +1,7 @@
 package com.niit.CollaborationBackEnd.TestCase;
 
+import java.util.Date;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.CollaborationBackEnd.dao.BlogDAO;
@@ -18,11 +20,20 @@ public class BlogTestCase {
 		Blog blog = (Blog) context.getBean("blog");
 		
 		blog.setId("BL03");
-		blog.setUserId("US03");
+		
+		blog.setTitle("BLOG3");
+		
 		blog.setDescription("This is blog 3");
+		
+		blog.setUserId("US01");
+		
 		blog.setStatus('N');
 		
+		blog.setCreated(new Date(System.currentTimeMillis()));
+		
 		blogDAO.save(blog);
+		
+		System.out.println("*****Data successfully added into Blog table***** ");
 
 	}
 }

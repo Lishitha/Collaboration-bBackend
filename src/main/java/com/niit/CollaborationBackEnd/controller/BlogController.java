@@ -18,24 +18,23 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.niit.CollaborationBackEnd.dao.BlogDAO;
 import com.niit.CollaborationBackEnd.model.Blog;
 
-
-
 @RestController
 public class BlogController {
 
 	@Autowired
-    private BlogDAO blogDAO;
+	private BlogDAO blogDAO;
 
-   @Autowired
-   private Blog blog;
-   
-   
-   
-   @GetMapping("/Blog/")
-	public ResponseEntity<List<Blog>> listAllBlog() {
+	@Autowired
+	private Blog blog;
+
+	@GetMapping("/Blog/")
+	public ResponseEntity<List<Blog>> listAllBlog() 
+	{
 		List<Blog> listBlog = blogDAO.list();
-		if (listBlog.isEmpty()) {
 
+		if (listBlog.isEmpty())
+
+		{
 			return new ResponseEntity<List<Blog>>(HttpStatus.NO_CONTENT);
 		}
 
@@ -43,9 +42,12 @@ public class BlogController {
 	}
 
 	@GetMapping("/Blog/{id}")
-	public ResponseEntity<Blog> getBlog(@PathVariable("id") String id) {
+	public ResponseEntity<Blog> getBlog(@PathVariable("id") String id)
+	{
 		blog = blogDAO.get(id);
-		if (blog == null) {
+
+		if (blog == null) 
+		{
 			return new ResponseEntity<Blog>(HttpStatus.NO_CONTENT);
 		}
 
@@ -54,12 +56,11 @@ public class BlogController {
 	}
 
 	@PostMapping("/Blog/")
-	public ResponseEntity<Void> createBlog(@RequestBody Blog blog,
-			UriComponentsBuilder ucBuilder) {
-		if (blogDAO.get(blog.getId()) != null) {
-
+	public ResponseEntity<Void> createBlog(@RequestBody Blog blog, UriComponentsBuilder ucBuilder) 
+	{
+		if (blogDAO.get(blog.getId()) != null) 
+		{
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-
 		}
 
 		/*
@@ -68,18 +69,22 @@ public class BlogController {
 		blogDAO.save(blog);
 
 		HttpHeaders headers = new HttpHeaders();
+
 		headers.setLocation(ucBuilder.path("Blog/{id}/").buildAndExpand(blog.getId()).toUri());
+
 		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 
 	}
 
 	@PutMapping("/Blog/{id}")
-	public ResponseEntity<Blog> updateBlog(@PathVariable("id") String id,
-			@RequestBody Blog blog) {
-		
-		if (blogDAO.get(id) == null) {
+	public ResponseEntity<Blog> updateBlog(@PathVariable("id") String id, @RequestBody Blog blog) 
+	{
+
+		if (blogDAO.get(id) == null)
+		{
 			return new ResponseEntity<Blog>(HttpStatus.NOT_FOUND);
 		}
+
 		blog.setId(id);
 
 		blogDAO.update(blog);
@@ -89,19 +94,18 @@ public class BlogController {
 	}
 
 	@DeleteMapping("/Blog/{id}")
-	public ResponseEntity<Blog> deleteBlog(@PathVariable("id") String id) {
-
+	public ResponseEntity<Blog> deleteBlog(@PathVariable("id") String id)
+	{
 		blog = blogDAO.get(id);
-		if (blog == null) {
-
+		
+		if (blog == null) 
+		{
 			return new ResponseEntity<Blog>(HttpStatus.NOT_FOUND);
 		}
 
 		blogDAO.delete(id);
+		
 		return new ResponseEntity<Blog>(HttpStatus.NO_CONTENT);
 	}
 
-
-  
-	
 }

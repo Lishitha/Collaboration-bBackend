@@ -20,10 +20,15 @@ public class UserDetailTestCase {
 		UserDetail userDetail = (UserDetail) context.getBean("userDetail");
 		
 		userDetail.setId("US05");
+		
 		userDetail.setName("SIDHARTH");
+		
 		userDetail.seteMail("sidhu@gmail.com");
+		
 		userDetail.setPassWord("SIDHARTH");
+		
 		userDetail.setAddress("MUMBAI");
+		
 		userDetail.setMobNumber("1122334455");
 		
 		userDetailDAO.save(userDetail);

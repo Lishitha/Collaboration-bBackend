@@ -28,10 +28,12 @@ public class EventController {
 	private EventDAO eventDAO;
 	
 	 @GetMapping("/Event/")
-		public ResponseEntity<List<Event>> listAllEvent() {
+		public ResponseEntity<List<Event>> listAllEvent() 
+	 {
 			List<Event> listEvent = eventDAO.list();
-			if (listEvent.isEmpty()) {
-
+			
+			if (listEvent.isEmpty()) 
+			{
 				return new ResponseEntity<List<Event>>(HttpStatus.NO_CONTENT);
 			}
 
@@ -39,9 +41,12 @@ public class EventController {
 		}
 
 		@GetMapping("/Event/{id}")
-		public ResponseEntity<Event> getEvent(@PathVariable("id") String id) {
+		public ResponseEntity<Event> getEvent(@PathVariable("id") String id) 
+		{
 			event = eventDAO.get(id);
-			if (event == null) {
+			
+			if (event == null) 
+			{
 				return new ResponseEntity<Event>(HttpStatus.NO_CONTENT);
 			}
 
@@ -51,11 +56,11 @@ public class EventController {
 
 		@PostMapping("/Event/")
 		public ResponseEntity<Void> createEvent(@RequestBody Event Event,
-				UriComponentsBuilder ucBuilder) {
-			if (eventDAO.get(event.getId()) != null) {
-
+				UriComponentsBuilder ucBuilder) 
+		{
+			if (eventDAO.get(event.getId()) != null) 
+			{
 				return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-
 			}
 
 			/*
@@ -64,18 +69,22 @@ public class EventController {
 			eventDAO.save(event);
 
 			HttpHeaders headers = new HttpHeaders();
+			
 			headers.setLocation(ucBuilder.path("Event/{id}/").buildAndExpand(Event.getId()).toUri());
+			
 			return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 
 		}
 
 		@PutMapping("/Event/{id}")
 		public ResponseEntity<Event> updateEvent(@PathVariable("id") String id,
-				@RequestBody Event Event) {
-			
-			if (eventDAO.get(id) == null) {
+				@RequestBody Event Event) 
+		{		
+			if (eventDAO.get(id) == null) 
+			{
 				return new ResponseEntity<Event>(HttpStatus.NOT_FOUND);
 			}
+			
 			Event.setId(id);
 
 			eventDAO.update(event);
@@ -85,15 +94,17 @@ public class EventController {
 		}
 
 		@DeleteMapping("/Event/{id}")
-		public ResponseEntity<Event> deleteEvent(@PathVariable("id") String id) {
-
+		public ResponseEntity<Event> deleteEvent(@PathVariable("id") String id) 
+		{
 			event = eventDAO.get(id);
-			if (event == null) {
-
+			
+			if (event == null) 
+			{
 				return new ResponseEntity<Event>(HttpStatus.NOT_FOUND);
 			}
 
 			eventDAO.delete(id);
+			
 			return new ResponseEntity<Event>(HttpStatus.NO_CONTENT);
 		}
 

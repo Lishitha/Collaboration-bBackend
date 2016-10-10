@@ -21,39 +21,36 @@ import com.niit.CollaborationBackEnd.model.Chat;
 public class ChatController {
 
 	@Autowired
-    private ChatDAO chatDAO;
+	private ChatDAO chatDAO;
 
-   @Autowired
-   private Chat chat; 
-   
-   @GetMapping("/Chat/")
-	public ResponseEntity<List<Chat>> listAllChat()
-   {
+	@Autowired
+	private Chat chat;
+
+	@GetMapping("/Chat/")
+	public ResponseEntity<List<Chat>> listAllChat() {
 		List<Chat> listChat = chatDAO.list();
-		if (listChat.isEmpty()) 
-		{
+
+		if (listChat.isEmpty()) {
 			return new ResponseEntity<List<Chat>>(HttpStatus.NO_CONTENT);
 		}
+
 		return new ResponseEntity<List<Chat>>(listChat, HttpStatus.OK);
 	}
 
 	@GetMapping("/Chat/{id}")
-	public ResponseEntity<Chat> getChat(@PathVariable("id") String id) 
-	{
+	public ResponseEntity<Chat> getChat(@PathVariable("id") String id) {
 		chat = chatDAO.get(id);
-		if (chat == null)
-		{
+
+		if (chat == null) {
 			return new ResponseEntity<Chat>(HttpStatus.NO_CONTENT);
 		}
+
 		return new ResponseEntity<Chat>(chat, HttpStatus.OK);
 	}
 
 	@PostMapping("/Chat/")
-	public ResponseEntity<Void> createChat(@RequestBody Chat chat,
-			UriComponentsBuilder ucBuilder)
-	{
-		if (chatDAO.get(chat.getId()) != null) 
-		{
+	public ResponseEntity<Void> createChat(@RequestBody Chat chat, UriComponentsBuilder ucBuilder) {
+		if (chatDAO.get(chat.getId()) != null) {
 			return new ResponseEntity<Void>(HttpStatus.CONFLICT);
 		}
 
@@ -63,37 +60,40 @@ public class ChatController {
 		chatDAO.save(chat);
 
 		HttpHeaders headers = new HttpHeaders();
+
 		headers.setLocation(ucBuilder.path("Chat/{id}/").buildAndExpand(chat.getId()).toUri());
+
 		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 
 	}
 
 	@PutMapping("/Chat/{id}")
-	public ResponseEntity<Chat> updateChat(@PathVariable("id") String id,
-			@RequestBody Chat chat) 
-	{
-		
-		if (chatDAO.get(id) == null) 
-		{
+	public ResponseEntity<Chat> updateChat(@PathVariable("id") String id, @RequestBody Chat chat) {
+
+		if (chatDAO.get(id) == null) {
 			return new ResponseEntity<Chat>(HttpStatus.NOT_FOUND);
 		}
+
 		chat.setId(id);
+
 		chatDAO.update(chat);
+
 		return new ResponseEntity<Chat>(chat, HttpStatus.OK);
 
 	}
 
 	@DeleteMapping("/Chat/{id}")
-	public ResponseEntity<Chat> deleteChat(@PathVariable("id") String id)
-	{
+	public ResponseEntity<Chat> deleteChat(@PathVariable("id") String id) {
 
 		chat = chatDAO.get(id);
-		if (chat == null) 
-		{
+
+		if (chat == null) {
 
 			return new ResponseEntity<Chat>(HttpStatus.NOT_FOUND);
 		}
+
 		chatDAO.delete(id);
+
 		return new ResponseEntity<Chat>(HttpStatus.NO_CONTENT);
 	}
 }

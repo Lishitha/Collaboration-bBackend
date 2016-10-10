@@ -18,8 +18,11 @@ public class FriendTestCase {
 		Friend friend = (Friend) context.getBean("friend");
 		
 		friend.setId("02");
+		
 		friend.setUserId("US02");
+		
 		friend.setFriendId("FR02");
+		
 		friend.setStatus('N');
 		
 		friendDAO.save(friend);

@@ -20,9 +20,13 @@ public class EventTestCase {
 		Event event = (Event) context.getBean("event");
 		
 		event.setId("EV03");
+		
 		event.setName("EVENT 3");
+		
 		event.setDescription("MARRIEGE EVENT 3");
+		
 		event.setPlace("CALICUT3");
+		
 		event.setPostedDate(new Date(System.currentTimeMillis()));
 		
 		eventDAO.save(event);

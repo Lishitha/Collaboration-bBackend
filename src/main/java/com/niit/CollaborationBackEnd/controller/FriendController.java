@@ -28,10 +28,12 @@ public class FriendController {
 	private FriendDAO friendDAO;
 
 	 @GetMapping("/Friend/")
-		public ResponseEntity<List<Friend>> listAllFriend() {
+		public ResponseEntity<List<Friend>> listAllFriend() 
+	 {
 			List<Friend> listFriend = friendDAO.list();
-			if (listFriend.isEmpty()) {
-
+			
+			if (listFriend.isEmpty()) 
+			{
 				return new ResponseEntity<List<Friend>>(HttpStatus.NO_CONTENT);
 			}
 
@@ -39,9 +41,12 @@ public class FriendController {
 		}
 
 		@GetMapping("/Friend/{id}")
-		public ResponseEntity<Friend> getFriend(@PathVariable("id") String id) {
+		public ResponseEntity<Friend> getFriend(@PathVariable("id") String id) 
+		{
 			friend = friendDAO.get(id);
-			if (friend == null) {
+			
+			if (friend == null) 
+			{
 				return new ResponseEntity<Friend>(HttpStatus.NO_CONTENT);
 			}
 
@@ -51,11 +56,11 @@ public class FriendController {
 
 		@PostMapping("/Friend/")
 		public ResponseEntity<Void> createFriend(@RequestBody Friend friend,
-				UriComponentsBuilder ucBuilder) {
-			if (friendDAO.get(friend.getId()) != null) {
-
+				UriComponentsBuilder ucBuilder) 
+		{
+			if (friendDAO.get(friend.getId()) != null) 
+			{
 				return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-
 			}
 
 			/*
@@ -64,18 +69,23 @@ public class FriendController {
 			friendDAO.save(friend);
 
 			HttpHeaders headers = new HttpHeaders();
+			
 			headers.setLocation(ucBuilder.path("Friend/{id}/").buildAndExpand(friend.getId()).toUri());
+			
 			return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 
 		}
 
 		@PutMapping("/Friend/{id}")
 		public ResponseEntity<Friend> updateFriend(@PathVariable("id") String id,
-				@RequestBody Friend friend) {
+				@RequestBody Friend friend) 
+		{
 			
-			if (friendDAO.get(id) == null) {
+			if (friendDAO.get(id) == null) 
+			{
 				return new ResponseEntity<Friend>(HttpStatus.NOT_FOUND);
 			}
+			
 			friend.setId(id);
 
 			friendDAO.update(friend);
@@ -85,11 +95,12 @@ public class FriendController {
 		}
 
 		@DeleteMapping("/Friend/{id}")
-		public ResponseEntity<Friend> deleteFriend(@PathVariable("id") String id) {
-
+		public ResponseEntity<Friend> deleteFriend(@PathVariable("id") String id) 
+		{
 			friend = friendDAO.get(id);
-			if (friend == null) {
-
+			
+			if (friend == null) 
+			{
 				return new ResponseEntity<Friend>(HttpStatus.NOT_FOUND);
 			}
 

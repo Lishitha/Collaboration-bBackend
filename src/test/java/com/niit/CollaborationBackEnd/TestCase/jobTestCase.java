@@ -18,10 +18,15 @@ public class jobTestCase {
 		Job job = (Job) context.getBean("job");
 		
 		job.setId("JB02");
+		
 		job.setJobtitle("HR");
+		
 		job.setDescription("HR 1");
+		
 		job.setRequirement("DEGREE,PG");
+		
 		job.setCompany("TCS");
+		
 		job.setDateofposting(new Date(System.currentTimeMillis()));
 		
 		jobDAO.save(job);
